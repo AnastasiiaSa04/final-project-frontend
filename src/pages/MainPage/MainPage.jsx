@@ -8,9 +8,10 @@ import like from "../../assets/icons/notification.png";
 import comment from "../../assets/icons/comment.png";
 import updates from "../../assets/images/allUpdates.png";
 
-const fakePosts = [1, 2, 3, 4];
+
 
 const MainPage = () => {
+  const fakePosts = [1, 2, 3, 4];
   return (
     <div className={styles.wrapper}>
       <div>

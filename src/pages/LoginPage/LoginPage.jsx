@@ -3,8 +3,11 @@ import Button from "../../shared/components/Button/Button";
 import styles from "././LoginPage.module.css";
 import background from "../../assets/images/Background.png";
 import ichgram from "../../assets/images/ICHGRA 2.png";
+import { useNavigate } from "react-router-dom"
+
 
 const LoginPage = () => {
+  const navigate = useNavigate();
   return (
     <div className={styles.wrapper}>
       <div className={styles.background}>
@@ -40,7 +43,9 @@ const LoginPage = () => {
       <div className={styles.notHaveAccount}>
         <p className={styles.signup}>
           Don’t have an account?{" "}
-          <span>
+          <span
+          onClick={() => navigate("/registration")}
+          >
             <a>Sign up</a>
           </span>
         </p>

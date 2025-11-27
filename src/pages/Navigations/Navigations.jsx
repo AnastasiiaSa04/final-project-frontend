@@ -1,7 +1,7 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import LoginPage from "../LoginPage/LoginPage";
 import NotFoundPage from "../NotFoundPage/NotFoundPage";
-import RegisterPage from "../RegisterPage/RegisterPage";
+import SignUp from "../SignUpPage/SignUpPage"
 import ResetPage from "../ResetPage/ResetPage";
 import SignUpError from "../SignUpErrorPage/SignUpErrorPage";
 import MainPage from "../MainPage/MainPage";
@@ -10,9 +10,10 @@ import PrivateRoute from "./PrivateRoute";
 import ExplorePage from "../ExplorePage/ExplorePage";
 import MainLayout from "../../layouts/MainLayout";
 
-const isAuth = true;
+
 
 const Navigations = () => {
+  const isAuth = true;
   return (
     <Routes>
 
@@ -37,7 +38,7 @@ const Navigations = () => {
 />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/not-found" element={<NotFoundPage />} />
-      <Route path="/registration" element={<RegisterPage />} />
+      <Route path="/registration" element={<SignUp />} />
       <Route path="/reset" element={<ResetPage />} />
       <Route path="/sign-up-error" element={<SignUpError />} />
     </Routes>
