@@ -1,6 +1,6 @@
 import Sidebar from "../../shared/components/Sidebar/Sidebar";
 import Footer from "../../shared/components/Footer/Footer";
-import styles from "./mainPage.module.css";
+import styles from "./MainPage.module.css";
 
 import instaStorie from "../../assets/icons/instaStorie.png";
 import punkt from "../../assets/icons/punkt.png";
