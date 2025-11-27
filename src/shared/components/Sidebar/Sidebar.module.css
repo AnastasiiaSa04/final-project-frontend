@@ -1,0 +1,105 @@
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  border-right: 1px solid #DBDBDB;
+  padding: 20px;
+  box-sizing: border-box;
+  position: fixed;
+  left: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.logoTop {
+  width: 100px;
+  height: 60px;
+  margin-bottom: 20px;
+}
+
+.sidebarMenu {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+.sidebarMenuLink,
+.sideBarMenuLinkProfile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+  color: black;
+  font-size: 16px;
+  transition: color 0.3s, transform 0.3s;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.sidebarMenuLink:hover,
+.sideBarMenuLinkProfile:hover {
+  transform: translateX(10px);
+  font-weight: bold;
+}
+
+.icon {
+  width: 24px;
+  height: 24px;
+}
+
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 250px;
+  width: calc(100vw - 250px);
+  height: 100vh;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modalContent {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  min-width: 300px;
+  max-width: 500px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.usersList {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.usersList > img,
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.inputSearch {
+  padding: 10px;
+  border-radius: 8px;
+  background-color: #EFEFEF;
+  width: 100%;
+  border: none;
+  outline: none;
+  position: relative;
+}
+
+.clearInput {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+

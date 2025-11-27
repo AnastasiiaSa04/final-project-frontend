@@ -1,0 +1,81 @@
+.wrapper {
+  max-width: 1440px;
+  padding: 50px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: 400px 70px;
+  column-gap: 30px;
+  row-gap: 30px;
+}
+
+.background {
+  grid-column: 2 / 3;
+  grid-template-columns: 800px 600px;
+}
+
+.notHaveAccount {
+  grid-column: 3 / 4;
+  border: 1px solid #dbdbdb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.TextField {
+  grid-column: 3 / 4;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #dbdbdb;
+}
+
+.input {
+  padding: 10px;
+  width: 240px;
+  border: 1px solid #dbdbdb;
+}
+
+.separator {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.line {
+  flex: 1;
+  height: 1px;
+  background: #dbdbdb;
+}
+
+.or {
+  margin: 0 10px;
+  color: #737373;
+  font-size: 13px;
+  line-height: 15px;
+}
+
+.forgot {
+  font-size: 14px;
+  margin-top: 60px;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  line-height: 16px;
+  color: #00376b;
+}
+
+.signup {
+  margin-top: 15px;
+  font-size: 14px;
+  line-height: 18px;
+}
+
+.signup span {
+  color: #0095f6;
+  font-weight: 600;
+  cursor: pointer;
+  font-weight: bold;
+}

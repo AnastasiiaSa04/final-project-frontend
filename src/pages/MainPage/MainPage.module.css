@@ -1,0 +1,60 @@
+.wrapper {
+  display: flex;
+  padding: 40px;
+  flex-direction: row;
+}
+
+.content {
+  flex: 1;
+  padding: 30px;
+  margin-left: 220px;
+  margin-bottom: 100px;
+}
+
+.follow {
+    border: none;
+    background: none;
+    color: #0095F6;
+    font-weight: bold;
+}
+
+.postsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  
+}
+
+.postCard {
+  background: white;
+  padding: 5px;
+  border-bottom: 1px solid #DBDBDB;
+ 
+
+}
+
+.postHeader {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.postImg {
+  width: 100%;
+  margin: 10px 0;
+}
+
+.postActions {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.updates {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    padding-right: 50px;
+}
