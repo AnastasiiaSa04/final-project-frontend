@@ -1,4 +1,3 @@
-import Sidebar from "../../shared/components/Sidebar/Sidebar";
 import Footer from "../../shared/components/Footer/Footer";
 import styles from "./MainPage.module.css";
 
@@ -14,7 +13,6 @@ const fakePosts = [1, 2, 3, 4];
 const MainPage = () => {
   return (
     <div className={styles.wrapper}>
-      <Sidebar />
       <div>
         <div className={styles.content}>
           <div className={styles.postsGrid}>

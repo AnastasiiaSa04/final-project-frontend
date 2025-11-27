@@ -1,0 +1,25 @@
+.wrapper {
+  display: flex;
+}
+
+.postsGrid {
+  margin-left: 310px; 
+  padding: 50px;
+  row-gap: 5px;
+  column-count: 3;   
+  column-gap: 5px;    
+}
+
+.postCard {
+  break-inside: avoid;    
+  margin-bottom: 3px;
+  overflow: hidden;
+}
+
+.postImg {
+  width: 100%;
+  display: block;
+
+}
+
+
