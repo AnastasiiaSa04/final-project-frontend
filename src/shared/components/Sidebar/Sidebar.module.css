@@ -44,55 +44,63 @@
   font-weight: bold;
 }
 
+.sidebarMenuLink span,
+.sideBarMenuLinkProfile span {
+  font-weight: normal;
+  transition: font-weight 0.2s;
+}
+
+.sidebarMenuLink.active span,
+.sideBarMenuLinkProfile.active span {
+  font-weight: bold;
+}
+
+
 .icon {
   width: 24px;
   height: 24px;
 }
 
-.modalOverlay {
+
+.modalBackground {
   position: fixed;
   top: 0;
-  left: 250px;
-  width: calc(100vw - 250px);
+  left: 250px;       
+  width: calc(100vw - 250px); 
   height: 100vh;
-  background: rgba(0,0,0,0.7);
+  background: rgba(0, 0, 0, 0.7);
+  z-index: 900;       
+}
+
+
+.modalOverlay {
+  position: fixed;    
+  top: 0;
+  left: 250px;        
+  width: 300px;       
+  height: 100vh;      
+  background: white;  
+  z-index: 1000;      
   display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 1000;
+  flex-direction: column;
+  padding: 20px;
 }
 
 .modalContent {
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  min-width: 300px;
-  max-width: 500px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-}
-
-.usersList {
   display: flex;
-  gap: 15px;
-  align-items: center;
-}
-
-.usersList > img,
-.avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  object-fit: cover;
-}
-
-.inputSearch {
-  padding: 10px;
-  border-radius: 8px;
-  background-color: #EFEFEF;
-  width: 100%;
-  border: none;
-  outline: none;
+  flex-direction: column;
+  height: 100%;
+  gap: 20px;
+  overflow-y: auto;
   position: relative;
+  padding: 0;
+  border-radius: 0; 
+  box-shadow: none;
+}
+
+.modalContent h2 {
+  margin: 0;
+  padding-bottom: 10px;
 }
 
 .clearInput {
@@ -103,3 +111,45 @@
   cursor: pointer;
 }
 
+
+.searchInputWrapper {
+  position: relative;
+  margin-top: 10px;
+  margin-bottom: 30px;
+}
+
+.inputSearch {
+  width: 270px;
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #DBDBDB;
+  outline: none;
+  background-color: #EFEFEF;
+}
+
+.usersList {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.recent {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.usersList > img,
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  
+}
+
+
+.usersList > p {
+  font-weight: bold;
+  font-size: 14px;
+}

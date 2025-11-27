@@ -26,6 +26,10 @@ const Sidebar = () => {
     setSearchValue("");
   };
 
+  const clearSearchInput = () => {
+    setSearchValue("");
+  };
+
   const openModal = (name) => {
     setActive(name);
     setActiveModal(name);
@@ -38,7 +42,7 @@ const Sidebar = () => {
 
         <nav className={styles.sidebarMenu}>
           <button
-            className={styles.sidebarMenuLink}
+            className={`${styles.sidebarMenuLink} ${active === "home" ? styles.active : ""}`}
             onClick={() => setActive("home")}
           >
             <img
@@ -50,7 +54,7 @@ const Sidebar = () => {
           </button>
 
           <button
-            className={styles.sidebarMenuLink}
+            className={`${styles.sidebarMenuLink} ${active === "search" ? styles.active : ""}`}
             onClick={() => openModal("search")}
           >
             <img
@@ -62,31 +66,27 @@ const Sidebar = () => {
           </button>
 
           <button
-            className={styles.sidebarMenuLink}
-            onClick={() => openModal("explore")}
+            className={`${styles.sidebarMenuLink} ${active === "explore" ? styles.active : ""}`}
+            // onClick={() => openModal("explore")}
           >
             <img src={explore} alt="explore" className={styles.icon} />
             <span>Explore</span>
           </button>
 
           <button
-            className={styles.sidebarMenuLink}
-            onClick={() => openModal("messages")}
+            className={`${styles.sidebarMenuLink} ${active === "messages" ? styles.active : ""}`}
+            // onClick={() => openModal("messages")}
           >
             <img src={messenger} alt="messages" className={styles.icon} />
             <span>Messages</span>
           </button>
 
           <button
-            className={styles.sidebarMenuLink}
+            className={`${styles.sidebarMenuLink} ${active === "notifications" ? styles.active : ""}`}
             onClick={() => openModal("notifications")}
           >
             <img
-              src={
-                active === "notifications"
-                  ? notificationClicked
-                  : notification
-              }
+              src={active === "notifications" ? notificationClicked : notification}
               alt="notifications"
               className={styles.icon}
             />
@@ -94,16 +94,16 @@ const Sidebar = () => {
           </button>
 
           <button
-            className={styles.sidebarMenuLink}
-            onClick={() => openModal("create")}
+            className={`${styles.sidebarMenuLink} ${active === "create" ? styles.active : ""}`}
+            // onClick={() => openModal("create")}
           >
             <img src={create} alt="create" className={styles.icon} />
             <span>Create</span>
           </button>
 
           <button
-            className={styles.sideBarMenuLinkProfile}
-            onClick={() => openModal("profile")}
+            className={`${styles.sideBarMenuLinkProfile} ${active === "profile" ? styles.active : ""}`}
+            // onClick={() => openModal("profile")}
           >
             <img src={profile} alt="profile" className={styles.icon} />
             <span>Profile</span>
@@ -111,48 +111,57 @@ const Sidebar = () => {
         </nav>
       </div>
 
-      {/* Модалки */}
+
+
+
       {activeModal && (
-        <div className={styles.modalOverlay} onClick={closeModal}>
+        <>
           <div
-            className={styles.modalContent}
-            onClick={(e) => e.stopPropagation()}
-          >
-            <h2>{activeModal[0].toUpperCase() + activeModal.slice(1)}</h2>
+            className={styles.modalBackground}
+            onClick={closeModal}
+          ></div>
 
-            {activeModal === "search" && (
-              <>
-                <div className={styles.searchInputWrapper}>
-                  <input
-                    className={styles.inputSearch}
-                    type="text"
-                    placeholder="Search"
-                    value={searchValue}
-                    onChange={(e) => setSearchValue(e.target.value)}
-                  />
-                  <img
-                    className={styles.clearInput}
-                    src={close}
-                    alt="close"
-                    onClick={closeModal}
-                  />
-                </div>
+          <div className={styles.modalOverlay} onClick={(e) => e.stopPropagation()}>
+            <div className={styles.modalContent}>
+              <h2>{activeModal[0].toUpperCase() + activeModal.slice(1)}</h2>
 
-                <p>Recent</p>
-                <div className={styles.usersList}>
-                  <img src={avatar} alt="avatar" className={styles.avatar} />
-                  <p>sashaa</p>
-                </div>
-              </>
-            )}
+              {activeModal === "search" && (
+                <>
+                  <div className={styles.searchInputWrapper}>
+                    <input
+                      className={styles.inputSearch}
+                      type="text"
+                      placeholder="Search"
+                      value={searchValue}
+                      onChange={(e) => setSearchValue(e.target.value)}
+                    />
+                    <img
+                      className={styles.clearInput}
+                      src={close}
+                      alt="clear"
+                      onClick={clearSearchInput}
+                    />
+                  </div>
 
-            {activeModal !== "search" && <button onClick={closeModal}>Close</button>}
+                  <p className={styles.recent}>Recent</p>
+                  <div className={styles.usersList}>
+                    <img src={avatar} alt="avatar" className={styles.avatar} />
+                    <p>sashaa</p>
+                  </div>
+                </>
+              )}
+
+              {activeModal !== "search" && <button onClick={closeModal}>Close</button>}
+            </div>
           </div>
-        </div>
+        </>
       )}
     </>
   );
 };
 
 export default Sidebar;
+
+
+
 
