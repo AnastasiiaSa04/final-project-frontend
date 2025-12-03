@@ -1,20 +1,25 @@
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import SignUpForm from "../../modules/SignUp/SignUpForm"; 
-import styles from "../SignUpPage/SignUpPage.module.css"
-import ichgram from "../../assets/images/ICHGRA 2.png";
+import SignUp from "../../modules/SignUp/SignUp";
+import styles from "./SignUpPage.module.css";
+import ichgram from "../../assets/images/ICHGRA2.png";
 
 const SignUpPage = () => {
   const navigate = useNavigate();
+  const { loading, error } = useSelector((state) => state.auth);
 
   return (
     <div className={styles.wrapper}>
-
       <div className={styles.content}>
         <img src={ichgram} alt="ichgram" />
         <div className={styles.column}>
           <p>Sign up to see photos and videos</p>
           <p>from your friends.</p>
-          <SignUpForm className={styles.imput} /> 
+
+          <SignUp />
+
+          {loading && <p>Registering...</p>}
+          {error && <p style={{ color: "red" }}>{error}</p>}
 
           <p className={styles.haveAccount}>
             Have an account?{" "}

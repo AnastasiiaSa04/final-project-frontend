@@ -1,10 +1,9 @@
 import TextField from "../../shared/components/TextField/TextField";
 import Button from "../../shared/components/Button/Button";
-import styles from "././LoginPage.module.css";
+import styles from "./LoginPage.module.css";
 import background from "../../assets/images/Background.png";
-import ichgram from "../../assets/images/ICHGRA 2.png";
-import { useNavigate } from "react-router-dom"
-
+import ichgram from "../../assets/images/ICHGRA2.png";
+import { useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -43,9 +42,7 @@ const LoginPage = () => {
       <div className={styles.notHaveAccount}>
         <p className={styles.signup}>
           Don’t have an account?{" "}
-          <span
-          onClick={() => navigate("/registration")}
-          >
+          <span onClick={() => navigate("/registration")}>
             <a>Sign up</a>
           </span>
         </p>

@@ -1,12 +1,35 @@
 import { useForm } from "react-hook-form";
+import { useEffect } from "react";
 import Button from "../../shared/components/Button/Button";
-import TextField from "../../shared/components/TextField/TextField"
+import TextField from "../../shared/components/TextField/TextField";
 
-const SignUpForm = () => {
-  const { register, handleSubmit, formState: { errors } } = useForm();
+const SignUpForm = ({ requestErrors, isSubmitSuccess, submitForm }) => {
+  const {
+    register,
+    handleSubmit,
+    setError,
+    reset,
+    formState: { errors },
+  } = useForm();
 
-  const onSubmit = (data) => {
-    console.log("SIGN UP DATA:", data);
+  useEffect(() => {
+    if (requestErrors) {
+      for (const key in requestErrors) {
+        setError(key, {
+          message: requestErrors[key],
+        });
+      }
+    }
+  }, [requestErrors, setError]);
+
+  useEffect(() => {
+    if (isSubmitSuccess) {
+      reset();
+    }
+  }, [isSubmitSuccess, reset]);
+
+  const onSubmit = (values) => {
+    submitForm(values);
   };
 
   return (
@@ -15,29 +38,30 @@ const SignUpForm = () => {
         name="email"
         placeholder="Email"
         register={register}
-        rules={{ required: "Enter your email" }}
+        rules={{ required: "Email required" }}
         error={errors.email}
+        label="Name"
       />
       <TextField
         name="fullname"
-        type="fullnamename"
         placeholder="Full Name"
         register={register}
-        rules={{ required: "Enter yor Full name" }}
-        // error={errors.password}
+        rules={{ required: "Enter your full name" }}
+        error={errors.fullname}
       />
-            <TextField
+      <TextField
         name="username"
         placeholder="Username"
         register={register}
-        rules={{ required: "Add your username" }}
-        // error={errors.email}
+        rules={{ required: "Enter a username" }}
+        error={errors.username}
       />
-            <TextField
+      <TextField
         name="password"
+        type="password"
         placeholder="Password"
         register={register}
-        rules={{ required: "Create a password" }}
+        rules={{ required: "Password required" }}
         error={errors.password}
       />
       <Button type="submit">Sign Up</Button>
