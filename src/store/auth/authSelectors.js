@@ -1,7 +1,7 @@
-export const selectAuthRequest = (store) => {
-  return {
-    loading: store.auth.loading,
-    error: store.auth.error,
-    isRegisterSuccess: store.auth.isRegisterSuccess,
-  };
-};
+import { createSelector } from "@reduxjs/toolkit";
+
+export const selectAuthRequest = createSelector(
+  (state) => state.auth.loading,
+  (state) => state.auth.error,
+  (loading, error) => ({ loading, error })
+);
