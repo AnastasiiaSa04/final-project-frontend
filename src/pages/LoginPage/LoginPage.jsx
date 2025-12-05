@@ -25,6 +25,7 @@ const LoginPage = () => {
             className={styles.input}
             name="password"
             placeholder="Password"
+            autoComplete="current-password"
             register={() => {}}
           />
           <Button>Log In</Button>

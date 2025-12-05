@@ -8,7 +8,7 @@ const SignUp = () => {
   const { error, loading, isRegisterSuccess } = useSelector(selectAuthRequest);
 
   const dispatch = useDispatch();
-  const noRegister = async (payload) => {
+  const onRegister = async (payload) => {
     dispatch(registerUser(payload));
   };
 
@@ -19,7 +19,7 @@ const SignUp = () => {
       <SignUpForm
         requestErrors={error}
         isSubmitSuccess={isRegisterSuccess}
-        submitForm={noRegister}
+        submitForm={onRegister}
       />
       {loading && <p>Register request...</p>}
       {error && <p style={{ color: "red" }}>{error.email}</p>}

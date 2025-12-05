@@ -61,6 +61,7 @@ const SignUpForm = ({ requestErrors, isSubmitSuccess, submitForm }) => {
         type="password"
         placeholder="Password"
         register={register}
+        autoComplete="current-password"
         rules={{ required: "Password required" }}
         error={errors.password}
       />
