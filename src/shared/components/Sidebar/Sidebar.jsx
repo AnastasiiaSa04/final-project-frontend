@@ -48,7 +48,7 @@ const Sidebar = () => {
           <button
             className={`${styles.sidebarMenuLink} ${active === "home" ? styles.active : ""}`}
             onClick={() => {
-              (setActive("home"), navigate("/"));
+              (setActive("home"), navigate("/main"));
             }}
           >
             <img

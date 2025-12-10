@@ -5,7 +5,19 @@ const LoginForm = ({ submitForm, requestErrors }) => {
     register,
     handleSubmit,
     formState: { errors },
+    setError,
   } = useForm();
+  useEffect(() => {
+    if (requestErrors) {
+      for (const key in requestErrors) {
+        const message =
+          typeof requestErrors[key] === "string"
+            ? requestErrors[key]
+            : Object.values(requestErrors[key]).join(", ");
+        setError(key, { message });
+      }
+    }
+  }, [requestErrors, setError]);
 
   const onSubmit = (values) => {
     submitForm(values);
@@ -17,12 +29,11 @@ const LoginForm = ({ submitForm, requestErrors }) => {
         <input
           type="text"
           placeholder="Username or Email"
+          autoComplete="email"
+          onChange={onChangeField}
           {...register("email", { required: "Email is required" })}
         />
         {errors.email && <p style={{ color: "red" }}>{errors.email.message}</p>}
-        {requestErrors?.email && (
-          <p style={{ color: "red" }}>{requestErrors.email}</p>
-        )}
       </div>
 
       <div>
@@ -30,13 +41,11 @@ const LoginForm = ({ submitForm, requestErrors }) => {
           type="password"
           placeholder="Password"
           autoComplete="current-password"
+          onChange={onChangeField}
           {...register("password", { required: "Password is required" })}
         />
         {errors.password && (
           <p style={{ color: "red" }}>{errors.password.message}</p>
-        )}
-        {requestErrors?.password && (
-          <p style={{ color: "red" }}>{requestErrors.password}</p>
         )}
       </div>
 

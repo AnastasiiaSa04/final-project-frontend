@@ -1,5 +1,5 @@
 import axios from "axios";
-import { store } from "../../store/store";
+import { dispatchLogout, dispatchTokens } from "./tokenService";
 
 const instance = axios.create({
   baseURL: import.meta.env.VITE_API_URL,
@@ -10,14 +10,31 @@ instance.interceptors.response.use(
   async (error) => {
     const originalRequest = error.config;
 
-    if (error.status === 401 && error.message === "accessToken expired") {
+    if (error.response?.status === 401 && !originalRequest._retry) {
+      originalRequest._retry = true;
+
       const { auth } = store.getState();
-      const { data } = await instance.post("/auth/refresh", {
-        refreshToken: auth.refreshToken,
-      });
-      instance.defaults.headers["Authorization"] = `Bearer ${data.accessToken}`;
-      return instance(originalRequest);
+
+      try {
+        const { data } = await axios.post(
+          `${import.meta.env.VITE_API_URL}/auth/refresh`,
+          { refreshToken: auth.refreshToken }
+        );
+
+        instance.defaults.headers["Authorization"] =
+          `Bearer ${data.accessToken}`;
+
+        dispatchTokens(data);
+
+        return instance(originalRequest);
+      } catch (e) {
+        dispatchLogout();
+        return Promise.reject(e);
+      }
     }
+
+    return Promise.reject(error);
   }
 );
+
 export default instance;

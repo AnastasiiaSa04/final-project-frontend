@@ -7,14 +7,14 @@ import postExample from "../../assets/images/postExample.png";
 import like from "../../assets/icons/notification.png";
 import comment from "../../assets/icons/comment.png";
 import updates from "../../assets/images/allUpdates.png";
-
-
+import Sidebar from "../../shared/components/Sidebar/Sidebar";
 
 const MainPage = () => {
   const fakePosts = [1, 2, 3, 4];
   return (
     <div className={styles.wrapper}>
       <div>
+        <Sidebar />
         <div className={styles.content}>
           <div className={styles.postsGrid}>
             {fakePosts.map((item) => (

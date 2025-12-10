@@ -3,7 +3,12 @@ import { useEffect } from "react";
 import Button from "../../shared/components/Button/Button";
 import TextField from "../../shared/components/TextField/TextField";
 
-const SignUpForm = ({ requestErrors, isSubmitSuccess, submitForm }) => {
+const SignUpForm = ({
+  requestErrors,
+  isSubmitSuccess,
+  submitForm,
+  onChangeField,
+}) => {
   const {
     register,
     handleSubmit,
@@ -12,20 +17,17 @@ const SignUpForm = ({ requestErrors, isSubmitSuccess, submitForm }) => {
     formState: { errors },
   } = useForm();
 
+  // Устанавливаем ошибки для полей (если нужно)
   useEffect(() => {
-    if (requestErrors) {
-      for (const key in requestErrors) {
-        setError(key, {
-          message: requestErrors[key],
-        });
-      }
+    if (requestErrors && requestErrors.length > 0) {
+      requestErrors.forEach((message, index) => {
+        setError(`field${index}`, { message });
+      });
     }
   }, [requestErrors, setError]);
 
   useEffect(() => {
-    if (isSubmitSuccess) {
-      reset();
-    }
+    if (isSubmitSuccess) reset();
   }, [isSubmitSuccess, reset]);
 
   const onSubmit = (values) => {
@@ -40,7 +42,9 @@ const SignUpForm = ({ requestErrors, isSubmitSuccess, submitForm }) => {
         register={register}
         rules={{ required: "Email required" }}
         error={errors.email}
-        label="Name"
+        label="Email"
+        autoComplete="email"
+        onChange={onChangeField}
       />
       <TextField
         name="fullname"
@@ -48,6 +52,8 @@ const SignUpForm = ({ requestErrors, isSubmitSuccess, submitForm }) => {
         register={register}
         rules={{ required: "Enter your full name" }}
         error={errors.fullname}
+        autoComplete="name"
+        onChange={onChangeField}
       />
       <TextField
         name="username"
@@ -55,17 +61,31 @@ const SignUpForm = ({ requestErrors, isSubmitSuccess, submitForm }) => {
         register={register}
         rules={{ required: "Enter a username" }}
         error={errors.username}
+        autoComplete="username"
+        onChange={onChangeField}
       />
       <TextField
         name="password"
         type="password"
         placeholder="Password"
         register={register}
-        autoComplete="current-password"
         rules={{ required: "Password required" }}
         error={errors.password}
+        autoComplete="current-password"
+        onChange={onChangeField}
       />
       <Button type="submit">Sign Up</Button>
+
+      {/* Ошибки с сервера (только строки!) */}
+      {requestErrors && requestErrors.length > 0 && (
+        <div style={{ marginTop: "1rem" }}>
+          {requestErrors.map((err, idx) => (
+            <p key={idx} style={{ color: "red" }}>
+              {err}
+            </p>
+          ))}
+        </div>
+      )}
     </form>
   );
 };

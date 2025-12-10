@@ -5,4 +5,3 @@ export const selectAuthRequest = createSelector(
   (state) => state.auth.error,
   (loading, error) => ({ loading, error })
 );
-//hello

@@ -9,6 +9,7 @@ import {
   REGISTER,
 } from "redux-persist";
 import rootReducer from "./rootReducer";
+import { injectStore } from "../shared/api/tokenService";
 
 export const store = configureStore({
   reducer: rootReducer,
@@ -21,3 +22,5 @@ export const store = configureStore({
 });
 
 export const persistor = persistStore(store);
+
+injectStore(store);

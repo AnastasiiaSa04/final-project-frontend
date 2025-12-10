@@ -28,10 +28,15 @@ const TextField = ({
         {...props}
       />
 
-      {error && <p className={styles.error}>{error.message}</p>}
+      {error && (
+        <p className={styles.error}>
+          {typeof error === "string"
+            ? error
+            : error?.message || error?.email || "Invalid field"}
+        </p>
+      )}
     </div>
   );
 };
 
 export default TextField;
-

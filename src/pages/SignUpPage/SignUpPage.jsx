@@ -19,7 +19,6 @@ const SignUpPage = () => {
           <SignUp />
 
           {loading && <p>Registering...</p>}
-          {error && <p style={{ color: "red" }}>{error}</p>}
 
           <p className={styles.haveAccount}>
             Have an account?{" "}
